@@ -2,7 +2,7 @@ name: windows編譯
 on: push
 
 jobs:
-  編譯成txt:
+  build_to_exe:
     runs-on: windows-latest
     steps:
       - name: PyInstaller Windows
