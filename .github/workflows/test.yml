@@ -1,0 +1,11 @@
+name: windows編譯
+on: push
+
+job:
+  編譯成txt:
+    runs-on: windows-latest
+    steps:
+      - name: PyInstaller Windows
+        uses: JackMcKew/pyinstaller-action-windows@main
+        with:
+          path: src
