@@ -1,7 +1,7 @@
 name: windows編譯
 on: push
 
-job:
+jobs:
   編譯成txt:
     runs-on: windows-latest
     steps:
