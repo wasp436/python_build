@@ -22,3 +22,10 @@ jobs:
           nuitka-version: main
           script-name: test.py
           mode: app
+
+      - name: 上傳打包結果
+        uses: actions/upload-artifact@v7
+        with:
+          path: build/test.exe
+          include-hidden-files: true
+          archive: false
