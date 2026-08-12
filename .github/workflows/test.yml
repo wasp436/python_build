@@ -8,6 +8,7 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v7
+
       - name: 使用PyInstaller打包exe
         uses: sayyid5416/pyinstaller@v1
         with:
@@ -16,3 +17,26 @@ jobs:
           requirements: "requirements.txt"
           options: --onefile, --name "test"
           upload_exe_with_name: "test-exe"
+
+  build_step_by_step:
+    runs-on: windows-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v7
+
+      - name: 設定Python環境
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: 安裝PyInstaller
+        run: pip install pyinstaller
+
+      - name: 使用PyInstaller打包exe
+        run: pyinstaller --onefile --name "test" test.py
+
+      - name: 上傳成品
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-exe_step_by_step
+          path: dist/test.exe
