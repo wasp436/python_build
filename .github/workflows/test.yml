@@ -29,6 +29,9 @@ jobs:
         with:
           python-version: "3.x"
 
+      - name: 安裝依賴套件
+        run: pip install -r requirements.txt
+
       - name: 安裝PyInstaller
         run: pip install pyinstaller
 
