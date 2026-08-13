@@ -24,22 +24,22 @@ jobs:
       - name: checkout
         uses: actions/checkout@v7
 
-      - name: 設定Python環境
+      - name: 設定 Python 環境
         uses: actions/setup-python@v5
         with:
           python-version: "3.x"
 
-      - name: 安裝依賴套件
-        run: pip install -r requirements.txt
+      - name: 安裝相依套件
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pyinstaller
 
-      - name: 安裝PyInstaller
-        run: pip install pyinstaller
-
-      - name: 使用PyInstaller打包exe
+      - name: 使用 PyInstaller 打包 exe
         run: pyinstaller --onefile --name "test" test.py
 
-      - name: 上傳成品
+      - name: 上傳打包結果
         uses: actions/upload-artifact@v4
         with:
-          name: test-exe_step_by_step
+          name: test-exe
           path: dist/test.exe
